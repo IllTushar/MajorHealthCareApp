@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/home"
+    android:title="Home"
+    android:icon="@drawable/ic_baseline_home_24"
+    android:iconTint="@color/white"
+    />
+    <item android:id="@+id/world"
+        android:title="Covid Cases"
+        android:icon="@drawable/earth"
+        android:iconTint="@color/white" />
+
+    <item android:id="@+id/video"
+        android:title="New Disease"
+        android:icon="@drawable/ic_baseline_videocam_24"
+        android:iconTint="@color/white" />
+    <item android:id="@+id/maps"
+        android:title="Map"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:iconTint="@color/white" />
+    <item android:id="@+id/setting"
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:iconTint="@color/white" />
+</menu>
