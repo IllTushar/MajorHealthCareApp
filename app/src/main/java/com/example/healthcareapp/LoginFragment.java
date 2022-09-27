@@ -44,7 +44,8 @@ public class LoginFragment extends Fragment {
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplication(),ForgetPassword.class));
+                Bottom_sheet bottomSheet = new Bottom_sheet();
+                bottomSheet.show(getFragmentManager(), bottomSheet.getTag());
             }
         });
 
@@ -58,10 +59,12 @@ public class LoginFragment extends Fragment {
                 String Emails = loginEmail.getText().toString();
                 String Password =loginPassword.getText().toString();
                 if(Emails.isEmpty()){
+                    pd.dismiss();
                     Toast.makeText(getContext(), "Enter Email!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else if(Password.isEmpty()){
+                    pd.dismiss();
                     Toast.makeText(getContext(), "Enter Valid Password!!", Toast.LENGTH_SHORT).show();
                     return;
                 }

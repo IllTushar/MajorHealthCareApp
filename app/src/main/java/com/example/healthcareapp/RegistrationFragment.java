@@ -47,31 +47,32 @@ public class RegistrationFragment extends Fragment {
         registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialog pd = new ProgressDialog(getContext());
+                pd.setMessage("Please wait");
+                pd.setTitle("Registration");
+                pd.show();
                 String Name = name.getText().toString().trim();
                 String Email = email.getText().toString().trim();
                 String Password = password.getText().toString().trim();
                 String ConfPassword = confirmpassword.getText().toString().trim();
-                if (Name.isEmpty()){
+                if (Name.isEmpty()){pd.dismiss();
                     Toast.makeText(getContext(), "Enter Name!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else if(Email.isEmpty()){
+                else if(Email.isEmpty()){pd.dismiss();
                     Toast.makeText(getContext(), "Enter Email!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else if(Password.isEmpty()){
+                else if(Password.isEmpty()){pd.dismiss();
                     Toast.makeText(getContext(), "Enter Password!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else if(ConfPassword.isEmpty()){
+                else if(ConfPassword.isEmpty()){pd.dismiss();
                     Toast.makeText(getContext(), "Enter Conf-Password!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else if(Password.equals(ConfPassword)) {
-                    ProgressDialog pd = new ProgressDialog(getContext());
-                    pd.setMessage("Please wait");
-                    pd.setTitle("Registration");
-                    pd.show();
+
                     mAuth.createUserWithEmailAndPassword(Email, Password)
                             .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                                 @Override

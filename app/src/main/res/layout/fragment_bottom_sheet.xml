@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bottom_sheet"
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+    android:background="@drawable/bottom_sheet"
+    >
+   <com.google.android.material.textfield.TextInputLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="20dp">
+      <EditText
+          android:id="@+id/resetEmail"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="E-mail"
+          android:layout_marginRight="20dp"
+          android:layout_marginLeft="20dp"
+          />
+   </com.google.android.material.textfield.TextInputLayout>
+   <Button
+       android:id="@+id/btnReset"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Reset Password"
+       android:textSize="17sp"
+       android:elevation="10dp"
+       android:layout_marginLeft="50dp"
+       android:layout_marginBottom="20dp"
+       android:layout_marginRight="50dp"
+       android:layout_marginTop="10sp"
+       android:textColor="@color/white"
+       android:background="@drawable/button_round"/>
+</LinearLayout>
+</ScrollView>
+</FrameLayout>
