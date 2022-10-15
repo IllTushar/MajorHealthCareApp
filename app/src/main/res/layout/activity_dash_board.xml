@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashBoard">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1C8D73"
+        app:title="Welcome !!"
+        android:elevation="56dp"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white"/>
     <FrameLayout
+        android:layout_below="@+id/toolbar"
         android:id="@+id/FrameLayout"
         android:layout_above="@+id/menu"
         android:layout_width="match_parent"
@@ -22,5 +32,5 @@
         app:cnb_iconSize="24dp"
         app:cnb_animationDuration="175"
         android:background="@drawable/round_corner"
-        android:elevation="15dp"/>
+        android:elevation="56dp"/>
 </RelativeLayout>

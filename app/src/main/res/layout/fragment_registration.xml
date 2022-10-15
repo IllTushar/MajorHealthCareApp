@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:text="Registration"
         android:textSize="17sp"
-        android:elevation="10dp"
+        android:elevation="56dp"
         android:layout_margin="20dp"
         android:textColor="@color/white"
         android:background="@drawable/button_round"/>

@@ -28,6 +28,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
+            app:cardElevation="56dp"
             app:cardCornerRadius="20dp"
             android:elevation="10dp"
             android:orientation="vertical">

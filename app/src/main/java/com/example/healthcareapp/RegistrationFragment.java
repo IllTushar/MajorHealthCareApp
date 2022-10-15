@@ -17,10 +17,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.healthcareapp.Model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationFragment extends Fragment {
 
@@ -28,6 +31,8 @@ public class RegistrationFragment extends Fragment {
     private FirebaseAuth mAuth;
     Button registration;
 
+    private DatabaseReference reference;
+    FirebaseDatabase database;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +47,12 @@ public class RegistrationFragment extends Fragment {
         confirmpassword = root.findViewById(R.id.confirmPassword);
         email = root.findViewById(R.id.Email);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("Details");
         registration = root.findViewById(R.id.registration);
+
+
+
 
         registration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +91,12 @@ public class RegistrationFragment extends Fragment {
                                         // startActivity(new Intent(getActivity().getApplication(),DashBoard.class));
                                         pd.dismiss();
                                         Intent i = new Intent(getActivity().getApplication(), DashBoard.class);
+                                        UserModel userModel = new UserModel(Name,Password,Email);
+                                        reference.child(Password).setValue(userModel);
+                                        i.putExtra("email",Email);
                                         startActivity(i);
-                                    } else {
+                                    }
+                                    else {
                                         pd.dismiss();
                                         //Toast.makeText(MainActivity, "Failed", Toast.LENGTH_SHORT).show();
                                         Log.d(TAG, "signInWithCustomToken:failure", task.getException());

@@ -2,19 +2,30 @@ package com.example.healthcareapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class DashBoard extends AppCompatActivity implements ChipNavigationBar.OnItemSelectedListener{
     ChipNavigationBar chipNavigationBar;
     FrameLayout frameLayout;
+    Toolbar toolbar;
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +33,12 @@ public class DashBoard extends AppCompatActivity implements ChipNavigationBar.On
         loadFragment(new HomeFragment());
         chipNavigationBar = findViewById(R.id.menu);
         chipNavigationBar.setOnItemSelectedListener(this);
+        toolbar = findViewById(R.id.toolbar);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("Details");
+        String Email = getIntent().getStringExtra("email");
+         toolbar.setSubtitle(Email);
+        setSupportActionBar(toolbar);
     }
     private  void loadFragment(Fragment fragment){
         if (fragment!=null){

@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginFragment extends Fragment {
     EditText loginPassword,loginEmail;
@@ -74,7 +76,9 @@ public class LoginFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 pd.dismiss();
-                                startActivity(new Intent(getActivity().getApplication(), DashBoard.class));
+                                Intent i = new Intent(getActivity().getApplication(), DashBoard.class);
+                                i.putExtra("email",Emails);
+                                startActivity(i);
                             } else {
                                 pd.dismiss();
                                 Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
