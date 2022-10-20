@@ -7,7 +7,7 @@ public class UserModel {
         this.name = name;
         this.password = password;
         this.email = email;
-       // this.confirmPassword = confirmPassword;
+       //this.uid = uid;
     }
 
 //    public String getConfirmPassword() {
@@ -17,6 +17,7 @@ public class UserModel {
 //    public void setConfirmPassword(String confirmPassword) {
 //        this.confirmPassword = confirmPassword;
 //    }
+
 
     public String getName() {
         return name;
