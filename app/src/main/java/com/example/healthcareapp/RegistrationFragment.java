@@ -94,6 +94,7 @@ public class RegistrationFragment extends Fragment {
                                         UserModel userModel = new UserModel(Name,Password,Email);
                                         reference.child(Password).setValue(userModel);
                                         i.putExtra("email",Email);
+                                        i.putExtra("password",Password);
                                         startActivity(i);
                                     }
                                     else {

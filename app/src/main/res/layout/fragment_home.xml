@@ -42,24 +42,19 @@
                         android:textSize="20sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textinputlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="0dp">
-                        <EditText
+                        <TextView
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:textColor="@color/white"
                             android:layout_height="wrap_content"
-                            android:hint="Password"
+                            android:text="Password"
+                            android:textSize="18sp"
                             android:textColorHint="@color/white"
                             android:textColorHighlight="@color/white"
                             android:layout_marginRight="20dp"
                             android:layout_marginLeft="14dp"
                             />
-                    </com.google.android.material.textfield.TextInputLayout>
+
                     <TextView
                         android:visibility="gone"
                         android:text="Name"
@@ -98,15 +93,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
        </LinearLayout>
-       <com.google.android.material.floatingactionbutton.FloatingActionButton
-           android:layout_width="wrap_content"
-           android:layout_alignParentEnd="true"
-           android:layout_alignParentBottom="true"
-           android:id="@+id/btnfloating"
-           android:layout_height="wrap_content"
-           android:src="@drawable/ic_baseline_send_24"
-           android:layout_marginRight="10dp"
-           />
 
    </RelativeLayout>
 

@@ -78,6 +78,7 @@ public class LoginFragment extends Fragment {
                                 pd.dismiss();
                                 Intent i = new Intent(getActivity().getApplication(), DashBoard.class);
                                 i.putExtra("email",Emails);
+                                i.putExtra("password",Password);
                                 startActivity(i);
                             } else {
                                 pd.dismiss();

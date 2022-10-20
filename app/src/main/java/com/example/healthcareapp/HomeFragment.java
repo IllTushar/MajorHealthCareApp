@@ -25,10 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
-TextView name,gmail,profile;
-EditText password;
-TextInputLayout layout;
-FloatingActionButton floatingActionButton;
+TextView name,gmail,profile,password;
 FirebaseDatabase database;
 DatabaseReference reference;
     @Override
@@ -47,46 +44,33 @@ DatabaseReference reference;
         gmail = root.findViewById(R.id.gmail);
         profile = root.findViewById(R.id.profile);
         password = root.findViewById(R.id.password);
-        layout = root.findViewById(R.id.textinputlayout);
-        floatingActionButton = root.findViewById(R.id.btnfloating);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Details");
+        String Password = getActivity().getIntent().getStringExtra("password");
+        password.setText(Password);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        //Show Profile...
+        ProgressDialog pd = new ProgressDialog(getContext());
+        pd.setMessage("Loading..");
+        pd.show();
+        reference.child(Password).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                ProgressDialog pd = new ProgressDialog(getContext());
-                pd.setMessage("Loading..");
-                pd.show();
-                String Password =password.getText().toString();
-                if (password.getText().toString().isEmpty()){
-                    Toast.makeText(getContext(), "Enter Password!!", Toast.LENGTH_SHORT).show();
-                    pd.dismiss();
-                }else{
-                    reference.child(Password).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            pd.dismiss();
-                            profile.setVisibility(View.GONE);
-                            password.setVisibility(View.GONE);
-                            layout.setVisibility(View.GONE);
-                            floatingActionButton.setVisibility(View.GONE);
-                            String Email = String.valueOf(snapshot.child("email").getValue());
-                            String Name = String.valueOf(snapshot.child("name").getValue());
-                            name.setVisibility(View.VISIBLE);
-                            name.setText(Name);
-                            gmail.setVisibility(View.VISIBLE);
-                            gmail.setText(Email);
-                        }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pd.dismiss();
+                profile.setVisibility(View.GONE);
+                password.setVisibility(View.GONE);
+                String Email = String.valueOf(snapshot.child("email").getValue());
+                String Name = String.valueOf(snapshot.child("name").getValue());
+                name.setVisibility(View.VISIBLE);
+                name.setText(Name);
+                gmail.setVisibility(View.VISIBLE);
+                gmail.setText(Email);
+            }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            pd.dismiss();
-                            Toast.makeText(getContext(), "Something went wrong !!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                pd.dismiss();
+                Toast.makeText(getContext(), "Something went wrong !!", Toast.LENGTH_SHORT).show();
             }
         });
 
