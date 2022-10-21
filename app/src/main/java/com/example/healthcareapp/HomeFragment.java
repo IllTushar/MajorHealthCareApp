@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,10 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
 TextView name,gmail,profile,password;
 FirebaseDatabase database;
 DatabaseReference reference;
+    private ImageSlider imageSlider;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +54,14 @@ DatabaseReference reference;
         reference = database.getReference("Details");
         String Password = getActivity().getIntent().getStringExtra("password");
         password.setText(Password);
+        imageSlider = root.findViewById(R.id.image_slider);
 
+        ArrayList<SlideModel> slider = new ArrayList<>();
+        slider.add(new SlideModel(R.drawable.banner,ScaleTypes.FIT));
+        slider.add(new SlideModel(R.drawable.card1, ScaleTypes.FIT));
+        slider.add(new SlideModel(R.drawable.onlineconsult,ScaleTypes.FIT));
+        //slider.add(new SlideModel(R.drawable.login4,ScaleTypes.FIT));
+        imageSlider.setImageList(slider);
         //Show Profile...
         ProgressDialog pd = new ProgressDialog(getContext());
         pd.setMessage("Loading..");
