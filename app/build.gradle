@@ -52,5 +52,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.1'
     implementation 'com.firebaseui:firebase-ui-database:8.0.1'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
 }

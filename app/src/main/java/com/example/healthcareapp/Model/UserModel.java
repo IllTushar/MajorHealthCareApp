@@ -3,20 +3,14 @@ package com.example.healthcareapp.Model;
 public class UserModel {
     private String name,password,email;
 
+    public UserModel() {
+    }
+
     public UserModel(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
-       //this.uid = uid;
     }
-
-//    public String getConfirmPassword() {
-//        return confirmPassword;
-//    }
-//
-//    public void setConfirmPassword(String confirmPassword) {
-//        this.confirmPassword = confirmPassword;
-//    }
 
 
     public String getName() {

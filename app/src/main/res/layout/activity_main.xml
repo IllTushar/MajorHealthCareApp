@@ -23,8 +23,8 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="460dp"
-            android:layout_marginTop="200dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="190dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"

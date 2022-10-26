@@ -56,7 +56,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                  ProgressDialog pd = new ProgressDialog(getContext());
                 pd.setTitle("Login");
-                pd.setMessage("Please wait");
+                pd.setMessage("Please wait...");
                 pd.show();
                 String Emails = loginEmail.getText().toString();
                 String Password =loginPassword.getText().toString();

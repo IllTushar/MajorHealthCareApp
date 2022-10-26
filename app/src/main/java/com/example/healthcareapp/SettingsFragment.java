@@ -29,16 +29,11 @@ FloatingActionButton floatingActionButton;
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                click();
+                Intent i = new Intent(getContext(),DoctorProfile.class);
+                startActivity(i);
             }
         });
        return root;
     }
 
-
-
-    private void click(){
-        Intent i = new Intent(getContext(),DoctorProfile.class);
-        startActivity(i);
-    }
 }

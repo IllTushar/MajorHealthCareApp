@@ -125,7 +125,6 @@
                android:id="@+id/img"
                android:layout_width="194dp"
                app:civ_border_width="1dp"
-               android:elevation="10dp"
                app:civ_border_color="@color/white"
                android:layout_marginTop="5dp"
                android:layout_marginLeft="0dp"
