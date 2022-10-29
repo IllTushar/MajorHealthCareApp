@@ -1,4 +1,4 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.LoginRegistrationFragment;
 
 import android.app.Application;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.healthcareapp.R;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;

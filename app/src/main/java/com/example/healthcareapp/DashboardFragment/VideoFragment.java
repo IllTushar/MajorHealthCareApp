@@ -1,4 +1,4 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.DashboardFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.healthcareapp.Activity.Video_Upload;
+import com.example.healthcareapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class VideoFragment extends Fragment {
@@ -44,7 +45,7 @@ FloatingActionButton floatingActionButton;
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             startActivity(new Intent(getActivity(),Video_Upload.class));
+             startActivity(new Intent(getActivity(), Video_Upload.class));
             }
         });
 

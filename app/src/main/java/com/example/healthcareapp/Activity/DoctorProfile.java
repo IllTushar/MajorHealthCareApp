@@ -1,29 +1,25 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.Activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthcareapp.Model.DoctorModel;
+import com.example.healthcareapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +29,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -131,7 +125,7 @@ StorageReference storageReference;
                                String Name = name.getText().toString();
                                uploadDetials(imageUri);
                                Toast.makeText(DoctorProfile.this, "Upload Succeessful !!", Toast.LENGTH_SHORT).show();
-                               Intent i = new Intent(DoctorProfile.this,DoctorResumeUpload.class);
+                               Intent i = new Intent(DoctorProfile.this, DoctorResumeUpload.class);
                                i.putExtra("Name",Name);
                                startActivity(i);
                               }

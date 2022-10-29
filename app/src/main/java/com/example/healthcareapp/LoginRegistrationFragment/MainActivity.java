@@ -1,10 +1,12 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.LoginRegistrationFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.healthcareapp.LoginRegistrationFragment.LoginAdapter;
+import com.example.healthcareapp.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

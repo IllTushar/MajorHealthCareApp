@@ -4,6 +4,8 @@ public class DoctorModel
 {
 private String name,gmail,phone,conferenceId,image;
 
+    public DoctorModel() {
+    }
 
     public DoctorModel(String name, String gmail, String phone, String conferenceId, String image) {
         this.name = name;

@@ -1,4 +1,4 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +12,14 @@ import android.view.MenuInflater;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.healthcareapp.DashboardFragment.CovidFragment;
+import com.example.healthcareapp.DashboardFragment.HomeFragment;
+import com.example.healthcareapp.DashboardFragment.MapsFragment;
+import com.example.healthcareapp.DashboardFragment.SettingsFragment;
+import com.example.healthcareapp.DashboardFragment.VideoFragment;
+import com.example.healthcareapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class DashBoard extends AppCompatActivity implements ChipNavigationBar.OnItemSelectedListener{

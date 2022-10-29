@@ -16,35 +16,35 @@
         android:theme="@style/Theme.HealthCareApp"
         tools:targetApi="31">
         <activity
-            android:name=".DoctorResumeUpload"
+            android:name=".Activity.DoctorResumeUpload"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".DoctorProfile"
+            android:name=".Activity.DoctorProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Video_Upload"
+            android:name=".Activity.Video_Upload"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".DashBoard"
+            android:name=".Activity.DashBoard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginRegistrationFragment.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

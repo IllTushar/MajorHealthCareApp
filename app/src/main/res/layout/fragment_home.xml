@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".DashboardFragment.HomeFragment">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
    <RelativeLayout
-       android:id="@+id/relative"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -135,6 +135,7 @@
    </RelativeLayout>
        <LinearLayout
           android:layout_below="@+id/relative1"
+           android:id="@+id/relative2"
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
        <androidx.cardview.widget.CardView
@@ -157,7 +158,19 @@
            </LinearLayout>
        </androidx.cardview.widget.CardView>
        </LinearLayout>
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_below="@+id/relative2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/rev_view">
+
+       </androidx.recyclerview.widget.RecyclerView>
+
    </RelativeLayout>
-        </ScrollView>
+</ScrollView>
+
+
+
     </RelativeLayout>
 </FrameLayout>

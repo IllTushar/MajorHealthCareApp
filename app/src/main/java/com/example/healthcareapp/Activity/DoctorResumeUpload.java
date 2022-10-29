@@ -1,4 +1,4 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.Activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthcareapp.Model.DoctorResumeModel;
+import com.example.healthcareapp.R;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -96,7 +96,7 @@ DatabaseReference databaseReference;
                                        String PDFURI = uri.toString();
                                        Pdf(PDFURI);
                                           Toast.makeText(DoctorResumeUpload.this, "Upload Succeessful !!", Toast.LENGTH_SHORT).show();
-                                          Intent i = new Intent(DoctorResumeUpload.this,DoctorProfile.class);
+                                          Intent i = new Intent(DoctorResumeUpload.this, DoctorProfile.class);
                                           startActivity(i);
                                       }
                                   });

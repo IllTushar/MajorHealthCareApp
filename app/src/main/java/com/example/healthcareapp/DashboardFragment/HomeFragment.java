@@ -1,4 +1,4 @@
-package com.example.healthcareapp;
+package com.example.healthcareapp.DashboardFragment;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +23,12 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.healthcareapp.Activity.DoctorProfile;
+import com.example.healthcareapp.Adapter.RecyclerViewAdapter;
+import com.example.healthcareapp.Model.DoctorModel;
 import com.example.healthcareapp.Model.UserModel;
+import com.example.healthcareapp.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -42,7 +49,9 @@ TextView name,gmail,profile,password;
 CircleImageView img;
 FirebaseDatabase database;
 DatabaseReference reference;
+RecyclerView rec_view;
     private ImageSlider imageSlider;
+    RecyclerViewAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +69,7 @@ DatabaseReference reference;
         profile = root.findViewById(R.id.profile);
         password = root.findViewById(R.id.password);
         img  = root.findViewById(R.id.img);
+
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Details");
         String Password = getActivity().getIntent().getStringExtra("password");
@@ -72,6 +82,20 @@ DatabaseReference reference;
         slider.add(new SlideModel(R.drawable.onlineconsult,ScaleTypes.FIT));
         //slider.add(new SlideModel(R.drawable.login4,ScaleTypes.FIT));
         imageSlider.setImageList(slider);
+
+        // Recycler View....
+        rec_view = root.findViewById(R.id.rev_view);
+        rec_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<DoctorModel> options = new FirebaseRecyclerOptions
+                .Builder<DoctorModel>()
+                .setQuery(FirebaseDatabase.getInstance().getReference("Doctor's Details"), DoctorModel.class)
+                .build();
+         adapter= new RecyclerViewAdapter(options);
+        rec_view.setAdapter(adapter);
+
+
+
+
         //Show Profile...
         ProgressDialog pd = new ProgressDialog(getContext());
         pd.setMessage("Loading..");
@@ -91,10 +115,7 @@ DatabaseReference reference;
                 name.setText(Name);
                 gmail.setVisibility(View.VISIBLE);
                 gmail.setText(Email);
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 pd.dismiss();
@@ -103,5 +124,23 @@ DatabaseReference reference;
         });
 
         return root;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            adapter.startListening();
+        }catch (Exception e){
+            Log.d("onStop: ",e.getMessage());
+        }
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        try {
+            adapter.stopListening();
+        }catch (Exception e){
+            Log.d("onStop: ",e.getMessage());
+        }
     }
 }

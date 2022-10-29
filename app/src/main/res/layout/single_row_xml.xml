@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/white"
+    android:layout_marginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginTop="3dp"
+    app:cardElevation="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/rec_image_profile"
+            android:layout_width="120dp"
+            android:src="@drawable/profile"
+            android:layout_height="120dp"
+
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+          <TextView
+              android:id="@+id/drname"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Name"
+              android:textColor="@color/black"
+              android:textStyle="bold"
+              android:textSize="20sp"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/Drphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/Drid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video Call ID"
+                android:textSize="15sp"/>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+            <Button
+
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:elevation="56dp"
+                android:text="Call"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:layout_marginRight="2.5dp"
+                android:background="@drawable/btn_call"/>
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:text="V-Call"
+                    android:elevation="56dp"
+                    android:layout_marginLeft="2.5dp"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_call"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>
