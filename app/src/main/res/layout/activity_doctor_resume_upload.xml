@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DoctorResumeUpload"
     android:orientation="vertical">
-<Toolbar
+<androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbarResume"
     android:title="Resume"
     android:titleTextColor="@color/white"

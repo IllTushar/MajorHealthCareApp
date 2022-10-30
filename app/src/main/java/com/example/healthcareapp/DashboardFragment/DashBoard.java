@@ -1,4 +1,4 @@
-package com.example.healthcareapp.Activity;
+package com.example.healthcareapp.DashboardFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

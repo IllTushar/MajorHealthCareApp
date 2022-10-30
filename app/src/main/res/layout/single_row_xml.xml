@@ -46,6 +46,13 @@
               android:textSize="20sp"/>
             <TextView
                 android:layout_marginTop="5dp"
+                android:id="@+id/drgmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gmail"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/Drphone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,27 +70,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
-            <Button
-
-                android:layout_width="70dp"
-                android:layout_height="40dp"
+                android:gravity="end">
+            <TextView
+                android:layout_marginRight="10dp"
+               android:id="@+id/drcall"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:elevation="56dp"
-                android:text="Call"
-                android:padding="5dp"
-                android:textColor="@color/white"
-                android:layout_marginRight="2.5dp"
-                android:background="@drawable/btn_call"/>
-                <Button
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="more"
+                android:textColor="#1C8D73"
+                />
 
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:text="V-Call"
-                    android:elevation="56dp"
-                    android:layout_marginLeft="2.5dp"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_call"/>
             </LinearLayout>
         </LinearLayout>
 

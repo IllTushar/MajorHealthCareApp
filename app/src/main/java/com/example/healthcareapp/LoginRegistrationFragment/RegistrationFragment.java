@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.healthcareapp.Activity.DashBoard;
+import com.example.healthcareapp.DashboardFragment.DashBoard;
 import com.example.healthcareapp.Model.UserModel;
 import com.example.healthcareapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
