@@ -58,8 +58,8 @@ public class LoginFragment extends Fragment {
                 pd.setTitle("Login");
                 pd.setMessage("Please wait...");
                 pd.show();
-                String Emails = loginEmail.getText().toString();
-                String Password =loginPassword.getText().toString();
+                String Emails = loginEmail.getText().toString().trim();
+                String Password =loginPassword.getText().toString().trim();
                 if(Emails.isEmpty()){
                     pd.dismiss();
                     Toast.makeText(getContext(), "Enter Email!!", Toast.LENGTH_SHORT).show();

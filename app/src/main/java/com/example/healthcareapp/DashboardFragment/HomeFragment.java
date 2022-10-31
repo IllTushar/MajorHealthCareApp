@@ -57,7 +57,7 @@ DatabaseReference reference;
 RecyclerView rec_view;
 FloatingActionButton floatingActionButton;
 EditText searchBar;
-    private ImageSlider imageSlider;
+   // private ImageSlider imageSlider;
     RecyclerViewAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,25 +81,25 @@ EditText searchBar;
         reference = database.getReference("Details");
         String Password = getActivity().getIntent().getStringExtra("password");
         password.setText(Password);
-        imageSlider = root.findViewById(R.id.image_slider);
+     //   imageSlider = root.findViewById(R.id.image_slider);
 
         floatingActionButton = root.findViewById(R.id.btnSearch);
         searchBar = root.findViewById(R.id.searchoption);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Search = searchBar.getText().toString();
+                String Search = searchBar.getText().toString().trim();
                 searchBar(Search);
             }
         });
 
-
-        ArrayList<SlideModel> slider = new ArrayList<>();
-        slider.add(new SlideModel(R.drawable.banner,ScaleTypes.FIT));
-        slider.add(new SlideModel(R.drawable.card1, ScaleTypes.FIT));
-        slider.add(new SlideModel(R.drawable.onlineconsult,ScaleTypes.FIT));
-        //slider.add(new SlideModel(R.drawable.login4,ScaleTypes.FIT));
-        imageSlider.setImageList(slider);
+//
+//        ArrayList<SlideModel> slider = new ArrayList<>();
+//        slider.add(new SlideModel(R.drawable.banner,ScaleTypes.FIT));
+//        slider.add(new SlideModel(R.drawable.card1, ScaleTypes.FIT));
+//        slider.add(new SlideModel(R.drawable.onlineconsult,ScaleTypes.FIT));
+//        //slider.add(new SlideModel(R.drawable.login4,ScaleTypes.FIT));
+//        imageSlider.setImageList(slider);
 
         // Recycler View....
         rec_view = root.findViewById(R.id.rev_view);
@@ -172,38 +172,4 @@ EditText searchBar;
             Log.d("onStop: ",e.getMessage());
         }
     }
-
-//    @SuppressLint("ResourceType")
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        //getLayoutInflater().inflate(R.menu.search_bar, inflater, R.id.searchoption)
-//        MenuItem item = menu.findItem(R.id.search);
-//        SearchView searchView = (SearchView) item.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                processsearch(query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                processsearch(newText);
-//                return false;
-//            }
-//        });
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//    private void processsearch(String query)
-//    {
-//        FirebaseRecyclerOptions<DoctorModel> options = new FirebaseRecyclerOptions
-//                .Builder<DoctorModel>()
-//                .setQuery(FirebaseDatabase.getInstance().getReference("Doctor's Details").orderByChild("name").startAt(query).endAt(query+"\uf8ff"), DoctorModel.class)
-//                .build();
-//        adapter= new RecyclerViewAdapter(options);
-//        adapter.startListening();
-//        rec_view.setAdapter(adapter);
-//
-//    }
 }

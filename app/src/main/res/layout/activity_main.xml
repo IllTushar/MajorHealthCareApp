@@ -32,20 +32,22 @@
             app:cardCornerRadius="20dp"
             android:elevation="10dp"
             android:orientation="vertical">
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
 
-                />
+               />
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tabLayout"
-                />
+               />
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
