@@ -84,6 +84,7 @@
                     <Button
                         android:layout_margin="10dp"
                         android:layout_width="0dp"
+                        android:id="@+id/call"
                         android:layout_weight="1"
                         android:background="@drawable/smallbutton"
                         android:alpha="1"
@@ -92,6 +93,7 @@
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"/>
                     <Button
+                        android:id="@+id/videocall"
                         android:layout_width="0dp"
                         android:elevation="56dp"
                         android:background="@drawable/smallbutton"

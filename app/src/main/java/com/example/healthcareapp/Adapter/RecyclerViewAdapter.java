@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,10 +41,10 @@ static int PERMISSION_CODE=101;
                   holder.phone.setText(model.getPhone());
                   holder.id.setText(model.getConferenceId());
                   holder.email.setText(model.getGmail());
-        Glide.with(holder.imagesViews.getContext())
-                .load(model.getImage())
-                .into(holder.imagesViews);
-           holder.call.setOnClickListener(new View.OnClickListener() {
+                  Glide.with(holder.imagesViews.getContext())
+                  .load(model.getImage())
+                   .into(holder.imagesViews);
+             holder.call.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
                    try {
@@ -73,7 +74,7 @@ static int PERMISSION_CODE=101;
     {
         CircleImageView imagesViews;
         TextView name,phone,id,email;
-        TextView call;
+        Button call;
     public myViewHolder(@NonNull View itemView) {
         super(itemView);
         imagesViews = itemView.findViewById(R.id.rec_image_profile);

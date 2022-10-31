@@ -71,17 +71,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="end">
-            <TextView
-                android:layout_marginRight="10dp"
+            <Button
+                android:layout_marginRight="5dp"
                android:id="@+id/drcall"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="56dp"
+                android:elevation="50dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="more"
-                android:textColor="#1C8D73"
+                android:text="click"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/smallbutton"
+                android:textColor="@color/white"
                 />
 
             </LinearLayout>

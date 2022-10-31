@@ -12,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ import com.example.healthcareapp.Adapter.RecyclerViewAdapter;
 import com.example.healthcareapp.Model.DoctorModel;
 import com.example.healthcareapp.Model.UserModel;
 import com.example.healthcareapp.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -50,6 +55,8 @@ CircleImageView img;
 FirebaseDatabase database;
 DatabaseReference reference;
 RecyclerView rec_view;
+FloatingActionButton floatingActionButton;
+EditText searchBar;
     private ImageSlider imageSlider;
     RecyclerViewAdapter adapter;
     @Override
@@ -75,6 +82,17 @@ RecyclerView rec_view;
         String Password = getActivity().getIntent().getStringExtra("password");
         password.setText(Password);
         imageSlider = root.findViewById(R.id.image_slider);
+
+        floatingActionButton = root.findViewById(R.id.btnSearch);
+        searchBar = root.findViewById(R.id.searchoption);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Search = searchBar.getText().toString();
+                searchBar(Search);
+            }
+        });
+
 
         ArrayList<SlideModel> slider = new ArrayList<>();
         slider.add(new SlideModel(R.drawable.banner,ScaleTypes.FIT));
@@ -125,6 +143,17 @@ RecyclerView rec_view;
 
         return root;
     }
+
+    private void searchBar(String query) {
+        FirebaseRecyclerOptions<DoctorModel> options = new FirebaseRecyclerOptions
+                .Builder<DoctorModel>()
+                .setQuery(FirebaseDatabase.getInstance().getReference("Doctor's Details").orderByChild("name").startAt(query).endAt(query+"\uf8ff"), DoctorModel.class)
+                .build();
+        adapter= new RecyclerViewAdapter(options);
+        adapter.startListening();
+        rec_view.setAdapter(adapter);
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -143,4 +172,38 @@ RecyclerView rec_view;
             Log.d("onStop: ",e.getMessage());
         }
     }
+
+//    @SuppressLint("ResourceType")
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        //getLayoutInflater().inflate(R.menu.search_bar, inflater, R.id.searchoption)
+//        MenuItem item = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) item.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                processsearch(query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                processsearch(newText);
+//                return false;
+//            }
+//        });
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+//
+//    private void processsearch(String query)
+//    {
+//        FirebaseRecyclerOptions<DoctorModel> options = new FirebaseRecyclerOptions
+//                .Builder<DoctorModel>()
+//                .setQuery(FirebaseDatabase.getInstance().getReference("Doctor's Details").orderByChild("name").startAt(query).endAt(query+"\uf8ff"), DoctorModel.class)
+//                .build();
+//        adapter= new RecyclerViewAdapter(options);
+//        adapter.startListening();
+//        rec_view.setAdapter(adapter);
+//
+//    }
 }

@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:background="#1C8D73"
         app:title="Welcome !!"
+
         android:elevation="56dp"
         app:subtitleTextColor="@color/white"
         app:titleTextColor="@color/white"/>
