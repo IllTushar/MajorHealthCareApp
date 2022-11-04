@@ -19,6 +19,13 @@
         android:theme="@style/Theme.HealthCareApp"
         tools:targetApi="31">
         <activity
+            android:name=".CreteState"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activity.Call"
             android:exported="false">
             <meta-data

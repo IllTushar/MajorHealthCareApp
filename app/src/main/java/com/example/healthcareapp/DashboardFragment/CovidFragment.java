@@ -1,5 +1,7 @@
 package com.example.healthcareapp.DashboardFragment;
 
+import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,60 +9,71 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.healthcareapp.Api.ApiServices;
+import com.example.healthcareapp.Api.RetrofitClient;
+import com.example.healthcareapp.Model.covidModel;
 import com.example.healthcareapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CovidFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CovidFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public CovidFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CovidFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CovidFragment newInstance(String param1, String param2) {
-        CovidFragment fragment = new CovidFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+TextView txt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_covid, container, false);
+        View root = inflater.inflate(R.layout.fragment_covid, container, false);
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+        PieChart mPieChart = (PieChart)root.findViewById(R.id.pieChart);
+        txt = root.findViewById(R.id.list);
+
+        txt.setText("");
+        ApiServices api = new RetrofitClient().getRetrofit().create(ApiServices.class);
+        Call<covidModel> call = api.getValue();
+        call.enqueue(new Callback<covidModel>() {
+            @Override
+            public void onResponse(Call<covidModel> call, Response<covidModel> response) {
+                covidModel covidModels = response.body();
+                if (response.isSuccessful()){
+                    progressDialog.dismiss();
+                    txt.append(covidModels.getUpdated()+
+                            "\n"+covidModels.getCases()+"\n"+covidModels.getTodayCases()
+                    +"\n"+covidModels.getDeaths()+"\n"+covidModels.getTodayDeaths()
+                    +"\n"+covidModels.getRecovered()+"\n"+covidModels.getTodayRecovered()
+                    +"\n"+covidModels.getActive()+"\n"+covidModels.getCritical()+"\n"+covidModels.getAffectedCountries());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<covidModel> call, Throwable t) {
+                Toast.makeText(getContext(),"Something went wrong !!",Toast.LENGTH_SHORT).show();
+                return;
+            }
+        });
+
+         covidModel covidModels = new covidModel();
+        mPieChart.addPieSlice(new PieModel("Total Cases",636894241, Color.parseColor("#0730FF")));
+        mPieChart.addPieSlice(new PieModel("Active Cases", 14010953, Color.parseColor("#F44336")));
+        mPieChart.addPieSlice(new PieModel("Recovered", 616281449, Color.parseColor("#4CAF50")));
+        mPieChart.addPieSlice(new PieModel("Deaths", 6601839, Color.parseColor("#FF040D")));
+        mPieChart.startAnimation();
+        return root;
     }
 }

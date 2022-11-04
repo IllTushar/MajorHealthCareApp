@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".HelpLinePackage.HelplineView">
+<FrameLayout
+    android:id="@+id/Helpline"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical|center"
+            android:id="@+id/linear_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <EditText
+            android:id="@+id/searchView"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="250dp"
+            android:hint="Search"
+            android:paddingLeft="10dp"
+            android:layout_height="40dp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_search_24"/>
+        </LinearLayout>
+   <LinearLayout
+       android:layout_marginTop="10dp"
+       android:layout_below="@+id/linear_layout2"
+       android:id="@+id/linear_layout1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </androidx.recyclerview.widget.RecyclerView>
+   </LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical|center"
+            android:weightSum="2"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+        <EditText
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/edit_text2"
+            android:layout_height="40dp"
+            android:id="@+id/key"
+            android:paddingLeft="10dp"
+            android:inputType="textPassword"
+            android:hint="Key"/>
+        <Button
+
+            android:elevation="56dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="Developer Option"
+            android:textSize="13sp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:background="@drawable/button_round"/>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
+
+</LinearLayout>
